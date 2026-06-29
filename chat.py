@@ -6,8 +6,10 @@ MCP_SERVER_URL = input("MCP_SERVER_URL: ")
 
 previous_response_id = None
 
+total_tokens = 0
+
 while True:
-    user_input = input("You: ")
+    user_input = input("\nYou: ")
 
     if user_input.lower() in ["quit", "exit"]:
         break
@@ -27,6 +29,12 @@ while True:
     )
 
     print("Assistant:", response.output_text)
+
+    usage = response.usage
+    total_tokens += usage.total_tokens
+
+    print(f"\n\n[This turn: {usage.total_tokens} tokens]")
+    print(f"[Session total: {total_tokens} tokens]")
 
     # store session state
     previous_response_id = response.id
