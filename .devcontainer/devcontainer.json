@@ -12,10 +12,6 @@
       "label": "MCP Server",
       "onAutoForward": "openPreview",
       "visibility": "public"
-    },
-    "*": {
-      "visibility": "public",
-      "onAutoForward": "openPreview"
     }
   }
 }
