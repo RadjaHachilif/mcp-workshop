@@ -12,7 +12,7 @@
   After the dev container starts, allow time for dependencies to install.
   You will see:
   
-  ⠋ Running postStartCommand...
+    ⠋ Running postStartCommand...
 
 
 🌐 3. Make the port public
@@ -31,7 +31,7 @@
 
 🔑 5. Set your OpenAI API key
 
-  export OPENAI_API_KEY="your-api-key-here"
+    export OPENAI_API_KEY="your-api-key-here"
 
   
 ▶️ 6. Start the chat client
@@ -50,7 +50,7 @@
 
 💬 8. Start chatting 
 
-Once connected successfully, you can start interacting with the MCP server through the chat interface.
+  Once connected successfully, you can start interacting with the MCP server through the chat interface.
 
 
 ⚠️ Notes & Troubleshooting
