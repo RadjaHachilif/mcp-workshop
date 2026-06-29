@@ -3,7 +3,7 @@
   "image": "mcr.microsoft.com/devcontainers/python:3.11",
 
   "postCreateCommand": "pip install -r requirements.txt",
-  "postStartCommand": "mcp run server.py --transport sse",
+  "postStartCommand": "mcp run server.py --transport workshop",
 
   "forwardPorts": [8000],
 
