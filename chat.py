@@ -2,7 +2,7 @@ from openai import OpenAI
 
 client = OpenAI()
 
-MCP_SERVER_URL = "https://congenial-space-rotary-phone-qvppqpq7jr4f9pv5-8000.app.github.dev/sse"
+MCP_SERVER_URL = input("MCP_SERVER_URL: ")
 
 while True:
     user_input = input("You: ")
