@@ -4,15 +4,19 @@ client = OpenAI()
 
 MCP_SERVER_URL = input("MCP_SERVER_URL: ")
 
+history = []
+
 while True:
     user_input = input("You: ")
 
     if user_input.lower() in ["quit", "exit"]:
         break
 
+    history.append({"role": "user", "content": user_input})
+
     response = client.responses.create(
         model="gpt-5",
-        input=user_input,
+        input=history,
         tools=[
             {
                 "type": "mcp",
@@ -23,4 +27,7 @@ while True:
         ],
     )
 
-    print("Assistant:", response.output_text)
+    assistant_text = response.output_text
+    print("Assistant:", assistant_text)
+
+    history.append({"role": "assistant", "content": assistant_text})
