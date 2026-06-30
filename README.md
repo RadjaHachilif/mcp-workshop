@@ -12,8 +12,11 @@
   After the dev container starts, allow time for dependencies to install.
   You will see:
   
-    ⠋ Running postStartCommand...
-
+    ✔ Finishing up...
+    ⠏ Running postCreateCommand...
+    › pip install -r requirements.txt
+  
+  Wait unitl it is done.
 
 🌐 3. Make the port public
 
