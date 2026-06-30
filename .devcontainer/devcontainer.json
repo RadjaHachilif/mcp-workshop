@@ -3,7 +3,6 @@
   "image": "mcr.microsoft.com/devcontainers/python:3.11",
 
   "postCreateCommand": "pip install -r requirements.txt",
-  "postStartCommand": "echo 'MCP ready'",
 
   "forwardPorts": [8000],
 
