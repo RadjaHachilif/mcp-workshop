@@ -9,16 +9,31 @@
 
 ⏳ 2. Wait for setup to finish
 
-  After the dev container starts, allow time for dependencies to install.
-  You will see:
-  
+  After the dev container starts, allow some time for all dependencies to install automatically.
+
+  During this step, you should see output similar to:
+
     ✔ Finishing up...
     ⠏ Running postCreateCommand...
     › pip install -r requirements.txt
-  
-  Wait unitl it is done.
 
-🌐 3. Make the port public
+  Wait until the process is fully completed before continuing.
+
+
+🚀 3. Start the MCP server
+
+  Once the setup is complete, start the MCP server using:
+
+    mcp run server.py --transport sse
+
+  You should see output similar to:
+
+    INFO:     Started server process [2464]
+    INFO:     Waiting for application startup.
+    INFO:     Application startup complete.
+    INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+
+🌐 4. Make the port public
 
   Once the environment is running:
   
@@ -27,22 +42,22 @@
   Change its visibility from Private → Public
 
 
-🖥️ 4. Open a new terminal
+🖥️ 5. Open a new terminal
 
   Start a fresh terminal inside your Codespace/dev environment.
 
 
-🔑 5. Set your OpenAI API key
+🔑 6. Set your OpenAI API key
 
     export OPENAI_API_KEY="your-api-key-here"
 
   
-▶️ 6. Start the chat client
+▶️ 7. Start the chat client
     
     python3 chat.py
 
 
-🔗 7. Connect to the MCP server
+🔗 8. Connect to the MCP server
 
   When prompted, paste your forwarded port URL and append "sse"
   
@@ -51,7 +66,7 @@
     https://<your-codespace>-8000.app.github.dev/sse
 
 
-💬 8. Start chatting 
+💬 9. Start chatting 
 
   Once connected successfully, you can start interacting with the MCP server through the chat interface.
 
