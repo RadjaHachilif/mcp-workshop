@@ -28,7 +28,7 @@
 
     mcp run server.py --transport sse
 
-  You should see output similar to:
+  You should see an output similar to:
 
     INFO:     Started server process [2464]
     INFO:     Waiting for application startup.
@@ -40,9 +40,9 @@
 
   Once the environment is running:
   
-  Open the Ports tab
-  Find port 8000
-  Change its visibility from Private → Public
+  - Open the Ports tab
+  - Find port 8000
+  - Change its visibility from Private → Public
 
 
 🖥️ 5. Open a new terminal
