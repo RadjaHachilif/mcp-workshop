@@ -3,9 +3,10 @@
 📌 1. Initial setup
 
   Open the project repository on GitHub
+  
   Click Code → Codespaces → Create codespace
   
-  Wait for the environment to finish building
+  Wait for the environment to finish building.
 
 
 ⏳ 2. Wait for setup to finish
