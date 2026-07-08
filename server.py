@@ -7,7 +7,7 @@ mcp = FastMCP("demo-server")
 @mcp.tool()
 def hello(name: str) -> str:
     """Say hello"""
-    return f"Salam Alaikom {name} :) !"
+    return f"Hello {name} :) !"
 
 
 if __name__ == "__main__":
