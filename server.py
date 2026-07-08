@@ -3,11 +3,11 @@ from mcp.server.fastmcp import FastMCP
 # Create the MCP server
 mcp = FastMCP("demo-server")
 
-# Add a simple tool
+# A simple test tool
 @mcp.tool()
-def hello(name: str) -> str:
-    """Say hello"""
-    return f"Hello {name} :) !"
+def add(a: float, b: float) -> float:
+    """Add two numbers."""
+    return a + b
 
 
 if __name__ == "__main__":
