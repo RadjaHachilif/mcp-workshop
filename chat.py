@@ -1,8 +1,29 @@
 from openai import OpenAI
 
-client = OpenAI()
+SYSTEM_PROMPT = """
+You are an assistant for the available MCP tools.
 
-MCP_SERVER_URL = input("MCP_SERVER_URL: ")
+Use tools to answer questions.
+Base factual answers on tool results.
+Do not invent data or interpretations.
+
+For questions the tools cannot answer,
+politely explain which tools are available.
+""".strip()
+
+## Load config values
+
+config = {}
+
+for line in open("server.conf"):
+    if "=" not in line or line.strip().startswith("="):
+        continue
+
+    key, value = line.split("=", 1)
+    config[key.strip()] = value.split("#", maxsplit=1)[0].strip().strip('"')
+
+client = OpenAI(api_key=config["OPENAI_API_KEY"])
+MCP_SERVER_URL = config["MCP_SERVER_URL"]
 
 previous_response_id = None
 
@@ -15,7 +36,8 @@ while True:
         break
 
     response = client.responses.create(
-        model="gpt-5",
+        model="gpt-5-nano",
+        instructions=SYSTEM_PROMPT,
         input=user_input,
         previous_response_id=previous_response_id,
         tools=[
@@ -36,5 +58,6 @@ while True:
     print(f"\n\n[This turn: {usage.total_tokens} tokens]")
     print(f"[Session total: {total_tokens} tokens]")
 
-    # store session state
+    # Store session state.
     previous_response_id = response.id
+

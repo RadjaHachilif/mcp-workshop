@@ -1,83 +1,78 @@
-📦 Setup & Run Instructions
+# ECCB MCP Workshop: Setup and Run
 
-📌 1. Initial setup
+## 1. Initial setup
 
-  Open the project repository on GitHub
-  
-  Click Code → Codespaces → Create codespace
-  
-  Wait for the environment to finish building.
+1. Open the project repository on GitHub.
+2. Select **Code**, then **Codespaces**, then **Create codespace**.
+3. Wait for the environment to finish building.
 
+## 2. Wait for setup to finish
 
-⏳ 2. Wait for setup to finish
+After the dev container starts, allow time for all dependencies to install automatically.
 
-  After the dev container starts, allow some time for all dependencies to install automatically.
+During this step, you should see output similar to:
 
-  During this step, you should see output similar to:
+```text
+Finishing up...
+Running postCreateCommand...
+pip install -r requirements.txt
+```
 
-    ✔ Finishing up...
-    ⠏ Running postCreateCommand...
-    › pip install -r requirements.txt
+Wait until the process has completed before continuing.
 
-  Wait until the process is fully completed before continuing.
+## 3. Start the MCP server
 
+Once setup is complete, start the MCP server:
 
-🚀 3. Start the MCP server
+```bash
+python3 server.py
+```
 
-  Once the setup is complete, start the MCP server using:
+You should see output similar to:
 
-    mcp run server.py --transport sse
+```text
+INFO:     Started server process [2464]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+```
 
-  You should see an output similar to:
+## 4. Make the port public
 
-    INFO:     Started server process [2464]
-    INFO:     Waiting for application startup.
-    INFO:     Application startup complete.
-    INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+Once the environment is running:
 
+- Open the **Ports** tab.
+- Find port `8000`.
+- Change its visibility from **Private** to **Public**.
 
-🌐 4. Make the port public
+## 5. Open a new terminal
 
-  Once the environment is running:
-  
-  - Open the Ports tab
-  - Find port 8000
-  - Change its visibility from Private → Public
+Start a fresh terminal inside the Codespace/dev environment.
 
+## 6. Configure the chat client
 
-🖥️ 5. Open a new terminal
+Open `server.conf` and replace both placeholder values:
 
-  Start a fresh terminal inside your Codespace/dev environment.
+```text
+OPENAI_API_KEY="your-api-key-here"
+MCP_SERVER_URL="https://<your-codespace>-8000.app.github.dev/mcp"
+```
 
+Keep the `/mcp` suffix on the MCP server URL. Do not commit a real API key.
 
-🔑 6. Set your OpenAI API key
+## 7. Start the chat client
 
-    export OPENAI_API_KEY="your-api-key-here"
+```bash
+python3 chat.py
+```
 
-  
-▶️ 7. Start the chat client
-    
-    python3 chat.py
+## 8. Start chatting
 
+The client reads the server URL from `server.conf`, then you can start interacting with the MCP server through the chat interface.
 
-🔗 8. Connect to the MCP server
+## Troubleshooting
 
-  When prompted, paste your forwarded port URL and append "sse"
-  
-  Example:
-    
-    https://<your-codespace>-8000.app.github.dev/sse
-
-
-💬 9. Start chatting 
-
-  Once connected successfully, you can start interacting with the MCP server through the chat interface.
-
-
-⚠️ Notes & Troubleshooting
-
-  - Make sure the server is fully running before starting chat.py
-  - If the port is still private, the connection will fail
-  - Ensure OPENAI_API_KEY is set correctly before running the chat client
-  - If the endpoint fails, double-check the /sse suffix
-  
+- Ensure the server is fully running before starting `chat.py`.
+- The connection will fail if port `8000` is still private.
+- Ensure both values in `server.conf` have been replaced before starting the chat client.
+- If the endpoint fails, double-check the `/mcp` suffix.
