@@ -43,7 +43,7 @@ while True:
         tools=[
             {
                 "type": "mcp",
-                "server_label": "demo",
+                "server_label": "mcp-workshop",
                 "server_url": MCP_SERVER_URL,
                 "require_approval": "never",
             }

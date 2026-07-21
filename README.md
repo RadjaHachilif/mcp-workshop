@@ -25,10 +25,10 @@ Wait until the process has completed before continuing.
 Once setup is complete, start the MCP server:
 
 ```bash
-python3 server.py
+python3 server.py >& server.log
 ```
 
-You should see output similar to:
+The server output is written to `server.log`. It includes messages similar to:
 
 ```text
 INFO:     Started server process [2464]
@@ -43,32 +43,34 @@ Once the environment is running:
 
 - Open the **Ports** tab.
 - Find port `8000`.
-- Change its visibility from **Private** to **Public**.
+- Right-click the port, then select **Port Visibility** → **Public**.
 
-## 5. Open a new terminal
+## 5. Configure the chat client
 
-Start a fresh terminal inside the Codespace/dev environment.
-
-## 6. Configure the chat client
-
-Open `server.conf` and replace both placeholder values:
+Click `server.conf` in the left-hand file explorer and replace both placeholder values:
 
 ```text
 OPENAI_API_KEY="your-api-key-here"
 MCP_SERVER_URL="https://<your-codespace>-8000.app.github.dev/mcp"
 ```
 
-Keep the `/mcp` suffix on the MCP server URL. Do not commit a real API key.
+Keep the `/mcp` suffix on the MCP server URL. Do not commit a real API key. Then return to this README.
 
-## 7. Start the chat client
+## 6. Open a new terminal
+
+Open the **Terminal** tab and click **+** to start a fresh terminal.
+
+## 7. Open the server log
+
+Click `server.log` in the left-hand file explorer and keep it open on the right. It shows errors and debug information from your MCP server.
+
+## 8. Start the chat client and begin chatting
 
 ```bash
 python3 chat.py
 ```
 
-## 8. Start chatting
-
-The client reads the server URL from `server.conf`, then you can start interacting with the MCP server through the chat interface.
+The client reads the server URL from `server.conf`. You can now start interacting with the MCP server through the chat interface.
 
 ## Troubleshooting
 
@@ -76,3 +78,7 @@ The client reads the server URL from `server.conf`, then you can start interacti
 - The connection will fail if port `8000` is still private.
 - Ensure both values in `server.conf` have been replaced before starting the chat client.
 - If the endpoint fails, double-check the `/mcp` suffix.
+
+## Dataset included
+
+The included example dataset is from ['The project Wortschatz Leipzig'](https://wortschatz.uni-leipzig.de/en)
