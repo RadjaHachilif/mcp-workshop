@@ -25,7 +25,7 @@ Wait until the process has completed before continuing.
 Once setup is complete, start the MCP server:
 
 ```bash
-python3 server.py >& server.log
+./server.py >& server.log
 ```
 
 The server output is written to `server.log`. It includes messages similar to:
@@ -47,7 +47,7 @@ Once the environment is running:
 
 ## 5. Configure the chat client
 
-Click `server.conf` in the left-hand file explorer and replace both placeholder values:
+Click `chat.conf` in the left-hand file explorer and replace both placeholder values:
 
 ```text
 OPENAI_API_KEY="your-api-key-here"
@@ -67,16 +67,16 @@ Click `server.log` in the left-hand file explorer and keep it open on the right.
 ## 8. Start the chat client and begin chatting
 
 ```bash
-python3 chat.py
+./chat.py
 ```
 
-The client reads the server URL from `server.conf`. You can now start interacting with the MCP server through the chat interface.
+The client reads the server URL from `chat.conf`. You can now start interacting with the MCP server through the chat interface.
 
 ## Troubleshooting
 
 - Ensure the server is fully running before starting `chat.py`.
 - The connection will fail if port `8000` is still private.
-- Ensure both values in `server.conf` have been replaced before starting the chat client.
+- Ensure both values in `chat.conf` have been replaced before starting the chat client.
 - If the endpoint fails, double-check the `/mcp` suffix.
 
 ## Dataset included

@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from openai import OpenAI
 
 SYSTEM_PROMPT = """
@@ -15,7 +17,7 @@ politely explain which tools are available.
 
 config = {}
 
-for line in open("server.conf"):
+for line in open("chat.conf"):
     if "=" not in line or line.strip().startswith("="):
         continue
 
@@ -60,4 +62,3 @@ while True:
 
     # Store session state.
     previous_response_id = response.id
-

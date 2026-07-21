@@ -1,5 +1,8 @@
-from typing import Annotated
+#!/usr/bin/env python3
+
+import sys
 from json import load
+from typing import Annotated
 from urllib.parse import quote
 from urllib.request import urlopen
 
@@ -12,7 +15,6 @@ mcp = FastMCP(
     "demo-server",
     host="0.0.0.0",
     port=8000,
-    log_level="INFO",
     stateless_http=True,
 )
 
@@ -56,6 +58,12 @@ def english_word_frequency(
     If no entries match, the total count is 0. This does not prove that the word
     never occurs outside the supplied dataset.
     """
+    print(
+        "Tool english_word_frequency called with parameters: "
+        f"input_word={input_word}, case_sensitive={case_sensitive}, part_of={part_of}",
+        file=sys.stderr,
+    )
+
     
     word = input_word.strip()
 
@@ -111,6 +119,12 @@ def english_example_sentences(
     The examples come from the English news corpus.
     The response includes the total number of available sentences and up to the requested number of examples.
     """
+    print(
+        "Tool english_example_sentences called with parameters: "
+        f"word={word}, limit={limit}",
+        file=sys.stderr,
+    )
+
     url = (
         "https://api.wortschatz-leipzig.de/ws/sentences/eng_news_2013_3M/sentences/"
         f"{quote(word.strip())}?limit={limit}"
